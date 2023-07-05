@@ -1,0 +1,15 @@
+version: "3"
+services:
+        productservicedb:
+                image: mongo:latest
+                container_name: "productservicedb"
+                ports:
+                  - 27017:27017
+        productservice:
+                image: productservice:v1
+                container_name: productservice
+                ports:
+                  - 8082:8082
+                links:
+                  - productservicedb
+
